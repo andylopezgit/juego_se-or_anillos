@@ -12,14 +12,25 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="jugador_1">
-                <h4>Jugador 1</h4>
-                <div class="barra_energia"></div>
+
+            <div class="header_energia">
+                <div class="jugador_1">
+                    <h4 id="nombre_barra_1"></h4>
+                    <div class="contenedor_barra">
+                        <div class="barra_energia" id="barra_energia_j_1"></div>
+                    </div>
+
+                </div>
+                <div class="jugador_2">
+                    <h4 id="nombre_barra_2"></h4></h4>
+                    <div class="contenedor_barra">
+                        <div class="barra_energia" id="barra_energia_j_2"></div>
+                    </div>
+                </div>
             </div>
-            <div class="jugador_2">
-                <h4>Jugador 2</h4>
-                <div class="barra_energia"></div>
-            </div>
+            <div id="resultado"></div>
+
+
         </div>
         <div class="panel_juego">
             <div class="panel_izquierdo">
@@ -27,12 +38,22 @@
                     <div class="image">
                     </div>
                     <div class="datos">
-                        <span>Nombre: </span>
-                        <span>Energia: </span>
+                        <div class="cajaNombre">
+                            <span>Nombre: </span>
+                            <span id="div_nombre_1"></span>
+                        </div>
+                        <div class="cajaEnergia">
+                            <span>Energia: </span>
+                            <span id="div_energia_1"></span>
+                        </div>
+                        <div class="cajaVida">
+                            <span>Vida: </span>
+                            <span id="div_vida_1"></span>
+                        </div>
                     </div>
                     <div class="botones">
-                        <button>Atacar</button>
-                        <button>Curar</button>
+                        <button id="atacar_j_1">Atacar</button>
+                        <button id="btn_curar_1">Curar</button>
                     </div>
                 </div>
             </div>
@@ -41,14 +62,22 @@
                     <div class="image2">
                     </div>
                     <div class="datos">
-                        <span>Nombre: </span>
-                        <span>Energia: </span>
-                        <span>Vida: </span>
-
+                        <div class="cajaNombre">
+                            <span>Nombre: </span>
+                            <span id="div_nombre_2"></span>
+                        </div>
+                        <div class="cajaEnergia">
+                            <span>Energia: </span>
+                            <span id="div_energia_2"></span>
+                        </div>
+                        <div class="cajaVida">
+                            <span>Vida: </span>
+                            <span id="div_vida_2"></span>
+                        </div>
                     </div>
                     <div class="botones">
-                        <button>Atacar</button>
-                        <button>Curar</button>
+                        <button id="atacar_j_2">Atacar</button>
+                        <button id="btn_curar_2">Curar</button>
                     </div>
                 </div>
             </div>
