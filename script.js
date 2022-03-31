@@ -13,11 +13,8 @@ const pNombre2 = document.getElementById('div_nombre_2')
 const pEnergia2 = document.getElementById('div_energia_2')
 const pVida2 = document.getElementById('div_vida_2')
 const btn_curar_1 = document.getElementById('btn_curar_1')
-const btn_curar_2 = document.getElementById('btn_curar_1')
+const btn_curar_2 = document.getElementById('btn_curar_2')
 let resultado = document.getElementById('resultado')
-
-let eneJ1 = 4
-let eneJ2 = 4
 
 
 
@@ -59,11 +56,18 @@ function rayo(ata, vic) {
     let atacante = ata
     let victima = vic
 
-    const restaHp = 20
+    const restaHp = 25
     const restaEne = 15
 
     atacante.ene = atacante.ene - restaEne
     victima.hp = victima.hp - restaHp
+    let e = victima.hp * 4
+    if (atacante.nombre === 'Gandalf') {
+        barraEnergia_2.style.width = `${e}px`
+    } else {
+        barraEnergia_1.style.width = `${e}px`
+    }
+
 
 
     console.log(`'${atacante.nombre}, ataca a ${victima.nombre}, ${atacante.nombre} pierde ${restaEne} de Energia y la victima: ${victima.nombre} pierde  ${restaHp} de Vida'`)
@@ -85,17 +89,25 @@ function actualizarPantalla() {
 function medicamentos(personaje) {
     let topeVida = 100
     let perRecuperar = personaje
-    let recupero = 20
-    let e = eneJ1 * 100
-    
-    
+    let recupero = 25
+    let e
+    let barra
+
+    if (personaje.nombre == 'Gandalf') {
+        barra = barraEnergia_1
+    } else {
+        barra = barraEnergia_2
+    }
+
+
     if (perRecuperar.hp < topeVida) {
         perRecuperar.hp = perRecuperar.hp + recupero
-        barraEnergia_1.style.width = `${e}px`
-        return console.log(perRecuperar.hp)
+        let e = perRecuperar.hp * 4
+        barra.style.width = `${e}px`
     } else {
-        perRecuperar.hp = perRecuperar.hp
-        barraEnergia_1.style.width = `${e}px`
+        console.log(id)
+        perRecuperar.hp = perRecuperar.hp + recupero
+        barra.style.width = `${e}px`
     }
 }
 
@@ -136,18 +148,18 @@ btn_curar_1.addEventListener('click', () => {
     pVida1.innerHTML = personaje_1.hp
 })
 
+btn_curar_2.addEventListener('click', () => {
+    console.log('aca')
+    personaje_2.recuperar(medicamentos(personaje_2))
+    pVida2.innerHTML = personaje_2.hp
+})
+
 btn_atacarJugador_1.addEventListener('click', () => {
-    eneJ1 = eneJ1 - 1
-    let e = eneJ1 * 100
-    barraEnergia_2.style.width = `${e}px`
     personaje_1.atacar(rayo(personaje_1, personaje_2))
-    monitorvida(eneJ1)
+    //monitorvida(eneJ1)
 })
 
 btn_atacarJugador_2.addEventListener('click', () => {
-    eneJ2 = eneJ2 - 1
-    let e = eneJ2 * 100
-    barraEnergia_1.style.width = `${e}px`
     personaje_2.atacar(rayo(personaje_2, personaje_1))
-    monitorvida(eneJ2)
+    //monitorvida(eneJ2)
 })
