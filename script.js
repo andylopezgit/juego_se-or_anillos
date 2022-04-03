@@ -22,10 +22,22 @@ let resultado = document.getElementById('resultado')
 
 
 
-function monitorvida(energia) {
-    if (energia === 0) {
-        resultado.innerHTML = "FIN DEL JUEGO"
+function monitorvida(victima, atacante) {
+    let vi = victima
+    let at = atacante
+    if (vi.hp >= 50) {
+        resultado.innerHTML = `${vi.nombre.toUpperCase() } sigue vivo`
     } else {
+        if (vi.hp != 25) {
+            resultado.innerHTML = `FIN DEL JUEGO - ${at.nombre.toUpperCase() } VENCEDOR `
+            btn_atacarJugador_1.disabled = true
+            btn_atacarJugador_2.disabled = true
+            btn_curar_1.disabled = true
+            btn_curar_2.disabled = true
+        } else {
+            
+            resultado.innerHTML = `${vi.nombre.toUpperCase() } está gravemente herido`
+        }
 
     }
 }
@@ -62,16 +74,21 @@ function rayo(ata, vic) {
     atacante.ene = atacante.ene - restaEne
     victima.hp = victima.hp - restaHp
     let e = victima.hp * 4
+    actualizarPantalla()
     if (atacante.nombre === 'Gandalf') {
         barraEnergia_2.style.width = `${e}px`
+        barraEnergia_2.style.transition = 'all 1s'
+        cambioColorBarra(e, barraEnergia_2)
     } else {
         barraEnergia_1.style.width = `${e}px`
+        barraEnergia_1.style.transition = 'all 1s'
+        cambioColorBarra(e, barraEnergia_1)
     }
 
 
 
     console.log(`'${atacante.nombre}, ataca a ${victima.nombre}, ${atacante.nombre} pierde ${restaEne} de Energia y la victima: ${victima.nombre} pierde  ${restaHp} de Vida'`)
-    actualizarPantalla()
+    monitorvida(victima, atacante)
     return estaMuerto(victima)
 
 }
@@ -85,7 +102,7 @@ function actualizarPantalla() {
     pVida2.innerHTML = personaje_2.hp
 }
 
-// recuperacion con Medicamentos
+// recuperacion vida con Medicamentos
 function medicamentos(personaje) {
     let topeVida = 100
     let perRecuperar = personaje
@@ -104,18 +121,41 @@ function medicamentos(personaje) {
         perRecuperar.hp = perRecuperar.hp + recupero
         let e = perRecuperar.hp * 4
         barra.style.width = `${e}px`
+        cambioColorBarra(e, barra)
     } else {
-        console.log(id)
-        perRecuperar.hp = perRecuperar.hp + recupero
+        perRecuperar.hp = perRecuperar.hp
         barra.style.width = `${e}px`
     }
 }
 
+// funcion para ir cambiando el color de la vida segun los pixeles
+function cambioColorBarra(e, barra) {
+    let barrita = barra
+    let x = e
+    console.log(barrita)
+    switch (x) {
+        case 400:
+            barra.style.backgroundColor = 'green'
+            break
+        case 300:
+            barra.style.backgroundColor = 'yellow'
+            break
+        case 200:
+            barra.style.backgroundColor = 'orange'
+            break
+        case 100:
+            barra.style.backgroundColor = 'red'
+
+
+    }
+
+}
+
 // comprobar daño
 
-function estaMuerto(personaje) {
-    return (`${personaje.nombre} sigue vivo`)
-}
+// function estaMuerto(personaje) {
+//     return (`${personaje.nombre} Ataque`)
+// }
 
 //  INICIALIZANDO EL JUEGO
 

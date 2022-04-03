@@ -14,6 +14,9 @@ body {
     background-repeat: no-repeat;
     opacity: 1;
     height: 100vh;
+    width: auto;
+    min-width: 900px;
+    min-height: 600px;
 }
 
 .header {
@@ -27,7 +30,6 @@ body {
     margin: 4px;
     padding: 4px;
     height: 30px;
-    background-color: brown;
     opacity: 0.9;
     font-style: serif;
 }
@@ -36,32 +38,64 @@ body {
     display: flex;
     height: 80px;
     margin: 4px;
-    margin-top: 8px;
-    padding: 4px;
-    justify-content: space-between;
-    background-color: brown;
-    opacity: 0.9;
+    margin-top: 1.5rem;
+    padding: 04px;
+    justify-content: center;
 }
 
-.jugador_1{
+.jugador_1 {
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-right: 20px;
 }
 
-.jugador_2{
+.jugador_2 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    position: relative;
+
 }
+
+#nombre_barra_1 {
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    font-size: 20px;
+    align-items: center;
+}
+
+#nombre_barra_2 {
+    top: -25px;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+}
+
+.contenedor_barra_jugador {
+    position: relative;
+}
+
 
 .contenedor_barra {
-    width: 400px;
+    width: 405px;
     border: solid 1px;
     margin-top: 6px;
+    transition: all 1s;
+    padding: 0;
+    margin: 0;
+    border: 4px green solid;
 }
 
 .barra_energia {
     width: 400px;
-    height: 30px;
+    height: 40px;
     background-color: rgb(12, 141, 18);
 }
 
@@ -70,7 +104,6 @@ body {
     height: 500px;
     display: flex;
     flex-direction: row;
-    text;
 }
 
 .panel_izquierdo {
@@ -90,14 +123,12 @@ body {
 .panel_jugador {
     width: 300px;
     height: 350px;
-    background-color: blue;
+    background-color: rgba(11, 117, 78, 0.653);
     padding: 10px;
     overflow: hidden;
     font-size: 20px;
-    font-family: console
-    
-    ;
-    
+    font-family: console;
+
 }
 
 .image {
@@ -120,7 +151,7 @@ body {
 .datos {
     display: flex;
     flex-direction: column;
-    margin-top:16px;
+    margin-top: 16px;
 }
 
 
@@ -140,11 +171,6 @@ button {
     margin: 4px;
     padding: 6px;
     margin-top: 50px;
-    background-color: rgba(255, 251, 0, 0.842);
+    background-color: rgb(131, 177, 113);
     /* pointer-events: none; */
 }
-
-
-
-
-
